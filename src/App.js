@@ -1,6 +1,18 @@
+import React, { useState } from "react";
 import "./App.css";
+import AddEducation from "./AddEducation";
 
 function App() {
+  const [isAddingEducation, setIsAddingEducation] = useState(false);
+
+  if (isAddingEducation) {
+    return (
+      <div className="App">
+        <AddEducation onBack={() => setIsAddingEducation(false)} />
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <h1>Resume Builder</h1>
@@ -13,7 +25,9 @@ function App() {
       <div className="resumeSection">
         <h2>Education</h2>
         <p>Education Placeholder</p>
-        <button>Add Education</button>
+        <button onClick={() => setIsAddingEducation(true)}>
+          Add Education
+        </button>
         <br></br>
       </div>
       <div className="resumeSection">
